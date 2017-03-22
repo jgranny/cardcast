@@ -38,20 +38,6 @@
         <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
 
-        <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
-        <input ng-if="card._id !== cardId"
-               type="button"
-               value="Cast"
-               class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-               ng-click="showPopup(card)"/>
-
-        <!-- Displays 'Stop' and associated behavior for the card being cast -->
-         <input ng-if="card._id === cardId"
-                type="button"
-                value="Stop"
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                ng-click="castCard(null, true)"/>
-
 
       </div>
 

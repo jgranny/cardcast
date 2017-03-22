@@ -5,7 +5,7 @@ angular.module('cardcast.main', [])
 
   // Set $scope.deck with info received from deck resolve
   $scope.deck = deck;
-  $scope.currentCard = {};
+  $scope.currentDeck = {};
 
   //toggles popup warning using 'ng-show' in main.html
   $scope.showWarning = false;
@@ -25,7 +25,7 @@ angular.module('cardcast.main', [])
     // if there is an active session and someone else is casting show popup
     } else if (session && isCasting) {
       $scope.showWarning = true;
-      $scope.currentCard = card;
+      $scope.currentDeck = deck;
     } else if (chrome.cast) {
 
     // if there is no active session request one
@@ -35,10 +35,10 @@ angular.module('cardcast.main', [])
         // Provides extra time for the reciever to respond
         $timeout(function() {
           if (!isCasting) {
-            $scope.castCard(card);
+            $scope.castCard(deck);
           } else {
             $scope.showWarning = true;
-            $scope.currentCard = card;
+            $scope.currentDeck = deck;
           }
         }, 100);
 
@@ -52,22 +52,10 @@ angular.module('cardcast.main', [])
   };
 
 
-
-  // Sends cast using the card that invoked showPopup. The username tracks who is currently casting
-  // Passing the 'clear' parameter stops the current cast and reverts everything to default state.
-  $scope.castCard = function(card, clear = false) {
-    var message = {
-      username: clear ? null : user,
-      card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,
-      cardId: clear ? null : card._id
-    };
-    $scope.showWarning = false;
-    session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'onError: '));
-  };
-
   // Deletes selected card from the database
-  $scope.deleteDeck = function(deck) {
-    Service.deleteDeck(deck)
+  $scope.deleteDeck = function() {
+    console.log(deck)
+    Service.deleteDeck()
       .then(function(resp) {
         var index = $scope.deck.indexOf(deck);
         $scope.deck.splice(index, 1);

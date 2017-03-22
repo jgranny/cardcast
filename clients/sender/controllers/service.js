@@ -23,11 +23,11 @@ angular.module('cardcast.service', [])
     },
     deleteDeck: function(deck) {
       console.log(deck)
-      // return $http({
-      //   method: 'POST',
-      //   url: '/api/cards/' + de._id,
-      //   data: deck
-      // });
+      return $http({
+        method: 'POST',
+        url: '/api/decks/' + de._id,
+        data: deck
+      });
     },
 
     // Function that makes post request to '/api/cards' to insert new card into db
