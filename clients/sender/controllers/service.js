@@ -66,6 +66,21 @@ angular.module('cardcast.service', [])
 .factory('Auth', function($http, $location, $timeout) {
   return {
 
+    loggedIn: function(){
+
+        $http({
+        method: 'GET',
+        url: '/api/users'
+      })
+      .then(function(res) {
+          $location.path('/cards');
+      })
+      .catch(function(err) {
+         $timeout(function() {
+          $location.path('/login');
+        });
+      })
+    },
     // check if user is logged in
     // used for route authentication in app.js
     isAuth: function() {
@@ -76,7 +91,7 @@ angular.module('cardcast.service', [])
       .then(function(res) {
         return res.data;
       })
-      .catch(function() {
+      .catch(function(err) {
         $timeout(function() {
           $location.path('/login');
         });
@@ -92,7 +107,7 @@ angular.module('cardcast.service', [])
           username: username,
           password: password
         }
-      });
+      })
     },
 
     // create new account on the server
