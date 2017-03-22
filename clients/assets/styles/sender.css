@@ -30,7 +30,6 @@ p {
 
 .auth .mdl-card {
   width: 100%;
-  margin-top: 20%;
 }
 
 .auth .mdl-card__title {
@@ -67,12 +66,12 @@ p {
 
 .card-deck {
   width: 100%;
-  margin-top: 20%;
+  /*margin-top: 20%;*/
   min-height: 100px;
 }
 
 .col-xs-12 .card-deck {
-  margin-top: 15% !important;
+  margin-top: 20px;
 }
 
 .card-deck .mdl-card__title {
