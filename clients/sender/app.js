@@ -4,7 +4,7 @@ angular.module('cardcast', [
   'cardcast.new',
   'cardcast.auth',
   'cardcast.service',
-  'cardcast.decks',
+  'cardcast.deck',
   'cardcast.edit'
 ])
 
@@ -68,8 +68,8 @@ angular.module('cardcast', [
         card: getCard
       }
     })
-    .when('/decks', {
-      templateUrl: '/sender/controllers/decks/decks.html',
+    .when('/deck', {
+      templateUrl: '/sender/controllers/deck/deck.html',
       controller: 'DeckCtrl',
       resolve: {
         user: authorize,
