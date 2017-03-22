@@ -37,8 +37,6 @@
 
         <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
         <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
-
-
       </div>
 
     </div>
@@ -48,28 +46,6 @@
 
 <!-- Space for scrolling -->
 <div class="deck-footer">&nbsp;</div>
-
-<!-- Already Casting Warning pops up when 'showWarning' is true -->
-<div class="popup" ng-show="showWarning">
-  <div class="mdl-card mdl-shadow--8dp">
-
-    <div class="mdl-card__title">
-      <h3 class="mdl-card__title-text">Cast already in progress</h3>
-    </div>
-
-    <div class="mdl-card__supporting-text">Casting now will overwrite the current card.  Are you sure you want to continue?</div>
-
-    <div class="mdl-card__actions">
-      <button ng-click="cancelCast()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-        Cancel
-      </button>
-      <button ng-click="castCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-        Cast Anyway
-      </button>
-    </div>
-
-  </div>
-</div>
 
 <!-- Delete Card Warning -->
 <div class="popup" ng-show="showDelete">
