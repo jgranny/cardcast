@@ -29,6 +29,16 @@ router.post('/', helpers.isAuth, function(req, res) {
       console.error(err);
     });
 });
+router.post('/:id', helpers.isAuth, function(req, res, next) {
+  deckController.deleteDeck(req.body._id)
+    .then(function(resp) {
+      res.sendStatus(200);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+
+});
 
 
 module.exports = router;
