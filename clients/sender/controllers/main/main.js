@@ -11,6 +11,8 @@ angular.module('cardcast.main', [])
   $scope.showWarning = false;
   $scope.showDelete = false;
   $scope.username = user;
+  $scope.title = 'Untitled';
+
 
   // First checks for a session and sees if anyone else is currently casting.
   // Casts the card that invoked it as long as no one else is casting,
@@ -63,13 +65,29 @@ angular.module('cardcast.main', [])
   };
 
   $scope.warnDelete = function(deck) {
-    console.log(deck)
     $scope.showDelete = true;
     $scope.currentDeck = deck;
   };
 
   $scope.cancelDelete = function() {
     $scope.showDelete = false;
+  };
+
+
+
+  // Function that creates new deck
+  $scope.createDeck = function() {
+    // Format the card info to match deck model schema
+    var deckInfo = {
+      title: $scope.title,
+    };
+
+    // Use the createCard function from the Service factory
+    Service.createDeck(deckInfo)
+      .then(function(resp) {
+        $location.path('/');
+      });
+
   };
 
 });

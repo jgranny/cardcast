@@ -59,7 +59,7 @@ angular.module('cardcast', [
       resolve: {
         user: authorize
       }
-    })
+    })  
     .when('/edit/:id', {
       templateUrl: '/sender/controllers/edit/edit.html',
       controller: 'EditCtrl',

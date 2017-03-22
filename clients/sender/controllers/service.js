@@ -22,10 +22,16 @@ angular.module('cardcast.service', [])
         });
     },
     deleteDeck: function(deck) {
-      console.log(deck)
       return $http({
         method: 'POST',
         url: '/api/decks/' + deck._id,
+        data: deck
+      });
+    },
+    createDeck: function(deck) {
+      return $http({
+        method: 'POST',
+        url: '/api/decks',
         data: deck
       });
     },
@@ -34,7 +40,7 @@ angular.module('cardcast.service', [])
     createCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/decks',
+        url: '/api/cards',
         data: card
       });
     },
