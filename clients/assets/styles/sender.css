@@ -16,7 +16,6 @@ p {
   position: fixed;
   z-index: -1;
   height: 25%;
-  background-color: #E74C3C;
   width: 100%;
   color: #FFFFFF;
 }
@@ -207,14 +206,6 @@ p {
 }
 .card-preview .mdl-card {
   width: 100%;
-  background-color: #E74C3C;
-}
-
-.mdl-button--accent.mdl-button--accent.mdl-button--raised,
-.mdl-button--accent.mdl-button--accent.mdl-button--fab,
-.mdl-button--accent.mdl-button--accent {
-  background-color: #E74C3C;
-  color: #FFF;
 }
 
 /* fix for weird bootstrap thing */
