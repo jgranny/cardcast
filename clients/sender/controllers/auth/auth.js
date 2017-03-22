@@ -1,12 +1,14 @@
 angular.module('cardcast.auth', [])
 
 .controller('AuthCtrl', function($scope, $location, $timeout, Auth) {
-
+ 
   $scope.username = '';
   $scope.password = '';
   $scope.check = '';
   $scope.warning = '';
-
+  $scope.loggedIn = function() {
+    Auth.loggedIn()
+  }
   // try to login the user, redirect on success, show warning message on failure
   $scope.login = function() {
     if ($scope.username && $scope.password) {

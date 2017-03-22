@@ -1,8 +1,8 @@
 var DeckModel = require('../models/decks.js');
 
 // find all of the decks's cards in the database using their id
-exports.findAll = function(id) {
-  return DeckModel.find({deck: id});
+exports.findAll = function() {
+  return DeckModel.find();
 };
 
 // insert a new card into the database

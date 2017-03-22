@@ -12,7 +12,7 @@ angular.module('cardcast.service', [])
     getDeck: function() {
       return $http({
         method: 'GET',
-        url: '/api/cards'
+        url: '/api/decks'
       })
         .then(function(resp) {
           return resp.data;
@@ -21,12 +21,20 @@ angular.module('cardcast.service', [])
           console.error(err);
         });
     },
+    deleteDeck: function(deck) {
+      console.log(deck)
+      // return $http({
+      //   method: 'POST',
+      //   url: '/api/cards/' + de._id,
+      //   data: deck
+      // });
+    },
 
     // Function that makes post request to '/api/cards' to insert new card into db
     createCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards',
+        url: '/api/decks',
         data: card
       });
     },
@@ -66,6 +74,21 @@ angular.module('cardcast.service', [])
 .factory('Auth', function($http, $location, $timeout) {
   return {
 
+    loggedIn: function(){
+
+        $http({
+        method: 'GET',
+        url: '/api/users'
+      })
+      .then(function(res) {
+          $location.path('/cards');
+      })
+      .catch(function(err) {
+         $timeout(function() {
+          $location.path('/login');
+        });
+      })
+    },
     // check if user is logged in
     // used for route authentication in app.js
     isAuth: function() {
@@ -76,7 +99,7 @@ angular.module('cardcast.service', [])
       .then(function(res) {
         return res.data;
       })
-      .catch(function() {
+      .catch(function(err) {
         $timeout(function() {
           $location.path('/login');
         });
@@ -92,7 +115,7 @@ angular.module('cardcast.service', [])
           username: username,
           password: password
         }
-      });
+      })
     },
 
     // create new account on the server
