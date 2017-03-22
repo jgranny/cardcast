@@ -6,6 +6,7 @@ var path = require('path');
 var clients = require('./routes/clients');
 var users = require('./routes/users');
 var cards = require('./routes/cards');
+var decks = require('./routes/decks')
 
 // make bluebird the default Promise Library
 global.Promise = mongoose.Promise = require('bluebird');
@@ -38,6 +39,7 @@ require('./passport/init')(passport);
 // notice how the initialized passport object is passed to the users router
 app.use('/', clients);
 app.use('/api/users', users(passport));
+app.use('/api/decks', decks);
 app.use('/api/cards', cards);
 
 // serve static files

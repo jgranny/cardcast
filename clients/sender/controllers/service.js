@@ -12,7 +12,7 @@ angular.module('cardcast.service', [])
     getDeck: function() {
       return $http({
         method: 'GET',
-        url: '/api/cards'
+        url: '/api/decks'
       })
         .then(function(resp) {
           return resp.data;
