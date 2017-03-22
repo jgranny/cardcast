@@ -66,10 +66,10 @@ angular.module('cardcast.main', [])
   };
 
   // Deletes selected card from the database
-  $scope.deleteCard = function(card) {
-    Service.deleteCard(card)
+  $scope.deleteDeck = function(deck) {
+    Service.deleteDeck(deck)
       .then(function(resp) {
-        var index = $scope.deck.indexOf(card);
+        var index = $scope.deck.indexOf(deck);
         $scope.deck.splice(index, 1);
         $scope.showDelete = false;
       });

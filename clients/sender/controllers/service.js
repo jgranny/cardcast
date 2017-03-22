@@ -21,12 +21,20 @@ angular.module('cardcast.service', [])
           console.error(err);
         });
     },
+    deleteDeck: function(deck) {
+      console.log(deck)
+      // return $http({
+      //   method: 'POST',
+      //   url: '/api/cards/' + de._id,
+      //   data: deck
+      // });
+    },
 
     // Function that makes post request to '/api/cards' to insert new card into db
     createCard: function(card) {
       return $http({
         method: 'POST',
-        url: '/api/cards',
+        url: '/api/decks',
         data: card
       });
     },

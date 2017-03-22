@@ -6,7 +6,7 @@ var helpers = require('../helpers');
 
 router.get('/', helpers.isAuth, function(req, res, next) {
   // req has a user object given by passport
-  deckController.findAll(req.user._id)
+  deckController.findAll()
     .then(function(resp) {
       res.send(resp);
     })
@@ -15,5 +15,20 @@ router.get('/', helpers.isAuth, function(req, res, next) {
     });
 
 });
+
+router.post('/', helpers.isAuth, function(req, res) {
+  var deckInfo = {
+    title: req.body.title
+  };
+
+  deckController.insertOne(deckInfo)
+    .then(function(resp) {
+      res.sendStatus(200);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+});
+
 
 module.exports = router;
