@@ -1,97 +1,81 @@
-<!-- Bootstrap Grid System -->
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+<div class="body-primary mdl-shadow--4dp">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <h1>CardCast</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Navigation Card - Material Design Lite -->
-    <div class="card-deck mdl-card mdl-shadow--4dp">
+<div class="container" style="padding-top:15%;">
+  <!-- Bootstrap Grid System -->
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+      <!-- Navigation Card - Material Design Lite -->
+      <div class="card-deck mdl-card mdl-shadow--4dp">
+
+        <div class="mdl-card__title">
+          <h1 class="mdl-card__title-text">
+            Your Deck
+            <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+          </h1>
+        </div>
+
+        <div class="mdl-card__supporting-text">
+          Below is a list of all of the cards in your personal deck. Click the plus button in the bottom right corner to add a new card to your deck or edit one that already exits. When you are ready to cast a card, hit the cast button to share the card with any Chromecast on your network. Please make sure you are using an up-to-date version of the Chrome Browser.
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Iterates through all the users cards and displays them -->
+  <div ng-repeat="card in deck" class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+      <div class="card mdl-card mdl-shadow--4dp">
+
+        <div class="mdl-card__title">
+          <h3 class="mdl-card__title-text">{{ card.title }}</h3>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+
+          <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+          <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Space for scrolling -->
+  <div class="deck-footer">&nbsp;</div>
+
+  <!-- Delete Card Warning -->
+  <div class="popup" ng-show="showDelete">
+    <div class="mdl-card mdl-shadow--8dp">
 
       <div class="mdl-card__title">
-        <h1 class="mdl-card__title-text">
-          Your Deck
-          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
-        </h1>
+        <h3 class="mdl-card__title-text">Do You Really Want To Delete?</h3>
       </div>
 
-      <div class="mdl-card__supporting-text">
-        Below is a list of all of the cards in your personal deck. Click the plus button in the bottom right corner to add a new card to your deck or edit one that already exits. When you are ready to cast a card, hit the cast button to share the card with any Chromecast on your network. Please make sure you are using an up-to-date version of the Chrome Browser.
-      </div>
+      <div class="mdl-card__supporting-text">You are about to delete this card. This action cannot be undone.</div>
 
-    </div>
-
-  </div>
-</div>
-
-<!-- Iterates through all the users cards and displays them -->
-<div ng-repeat="card in deck" class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-
-    <div class="card mdl-card mdl-shadow--4dp">
-
-      <div class="mdl-card__title">
-        <h3 class="mdl-card__title-text">{{ card.title }}</h3>
-      </div>
-
-      <div class="mdl-card__supporting-text">{{ card.card }}</div>
-
-      <div class="mdl-card__actions mdl-card--border">
-
-        <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
-        <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
-
-
+      <div class="mdl-card__actions">
+        <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+          Cancel
+        </button>
+        <button ng-click="deleteDeck(currentDeck)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+          Delete
+        </button>
       </div>
 
     </div>
-
   </div>
-</div>
-
-<!-- Space for scrolling -->
-<div class="deck-footer">&nbsp;</div>
-
-<!-- Already Casting Warning pops up when 'showWarning' is true -->
-<div class="popup" ng-show="showWarning">
-  <div class="mdl-card mdl-shadow--8dp">
-
-    <div class="mdl-card__title">
-      <h3 class="mdl-card__title-text">Cast already in progress</h3>
-    </div>
-
-    <div class="mdl-card__supporting-text">Casting now will overwrite the current card.  Are you sure you want to continue?</div>
-
-    <div class="mdl-card__actions">
-      <button ng-click="cancelCast()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-        Cancel
-      </button>
-      <button ng-click="castCard(currentCard)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-        Cast Anyway
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- Delete Card Warning -->
-<div class="popup" ng-show="showDelete">
-  <div class="mdl-card mdl-shadow--8dp">
-
-    <div class="mdl-card__title">
-      <h3 class="mdl-card__title-text">Do You Really Want To Delete?</h3>
-    </div>
-
-    <div class="mdl-card__supporting-text">You are about to delete this card. This action cannot be undone.</div>
-
-    <div class="mdl-card__actions">
-      <button ng-click="cancelDelete()" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-        Cancel
-      </button>
-      <button ng-click="deleteDeck(currentDeck)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-        Delete
-      </button>
-    </div>
-
-  </div>
-</div>
 
 <!-- Add Card Button -->
 <a ng-click="createDeck()" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
