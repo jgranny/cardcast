@@ -4,6 +4,7 @@ angular.module('cardcast', [
   'cardcast.new',
   'cardcast.auth',
   'cardcast.service',
+  'cardcast.decks',
   'cardcast.edit'
 ])
 
@@ -66,6 +67,13 @@ angular.module('cardcast', [
         user: authorize,
         card: getCard
       }
+    })
+    .when('/decks', {
+      templateUrl: '/sender/controllers/decks/decks.html',
+      controller: 'DeckCtrl',
+      resolve: {
+        user: authorize,
+      }    
     })
     .otherwise({
       redirectTo: '/login'
