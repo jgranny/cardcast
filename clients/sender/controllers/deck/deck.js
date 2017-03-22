@@ -1,4 +1,4 @@
-angular.module('cardcast.decks', [
+angular.module('cardcast.deck', [
   'ngSanitize'
 ])
 
