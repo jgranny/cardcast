@@ -53,9 +53,8 @@ angular.module('cardcast.main', [])
 
 
   // Deletes selected card from the database
-  $scope.deleteDeck = function() {
-    console.log(deck)
-    Service.deleteDeck()
+  $scope.deleteDeck = function(deck) {
+    Service.deleteDeck(deck)
       .then(function(resp) {
         var index = $scope.deck.indexOf(deck);
         $scope.deck.splice(index, 1);
@@ -63,9 +62,10 @@ angular.module('cardcast.main', [])
       });
   };
 
-  $scope.warnDelete = function(card) {
+  $scope.warnDelete = function(deck) {
+    console.log(deck)
     $scope.showDelete = true;
-    $scope.currentCard = card;
+    $scope.currentDeck = deck;
   };
 
   $scope.cancelDelete = function() {

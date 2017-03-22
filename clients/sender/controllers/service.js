@@ -25,7 +25,7 @@ angular.module('cardcast.service', [])
       console.log(deck)
       return $http({
         method: 'POST',
-        url: '/api/decks/' + de._id,
+        url: '/api/decks/' + deck._id,
         data: deck
       });
     },

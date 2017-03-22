@@ -16,11 +16,11 @@ exports.findOne = function(id) {
 };
 
 // update the card info in the database
-exports.updateCard = function(card) {
+exports.updateDeck = function(card) {
   return DeckModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
 };
 
 // delete a card from the database
-exports.deleteCard = function(id) {
+exports.deleteDeck = function(id) {
   return DeckModel.remove({_id: id});
 };
