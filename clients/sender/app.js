@@ -59,14 +59,7 @@ angular.module('cardcast', [
       resolve: {
         user: authorize
       }
-    })
-    .when('/newDeck', {
-      templateUrl: '/sender/controllers/newDeck/newDeck.html',
-      controller: 'NewDeckCtrl',
-      resolve: {
-        user: authorize
-      }
-    })    
+    })  
     .when('/edit/:id', {
       templateUrl: '/sender/controllers/edit/edit.html',
       controller: 'EditCtrl',
