@@ -17,7 +17,8 @@ exports.findOne = function(id) {
 
 // update the card info in the database
 exports.updateCard = function(card) {
-  return CardModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
+  CardModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
+  return CardModel.findOne({_id: card.id})
 };
 
 // delete a card from the database
