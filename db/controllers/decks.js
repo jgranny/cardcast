@@ -12,6 +12,7 @@ exports.insertOne = function(card) {
 
 // find a card in the database using the card id
 exports.findOne = function(id) {
+  console.log("db id", id)
   return DeckModel.findOne({_id: id});
 };
 

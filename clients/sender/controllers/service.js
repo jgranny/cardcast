@@ -9,7 +9,7 @@ angular.module('cardcast.service', [])
     },
 
     // Function that makes get request to '/api/cards' to get user's deck from db
-    getDeck: function() {
+    getDecks: function() {
       return $http({
         method: 'GET',
         url: '/api/decks'
@@ -33,6 +33,15 @@ angular.module('cardcast.service', [])
         method: 'POST',
         url: '/api/decks',
         data: deck
+      }).then(res => res.data)
+    },
+     getDeck: function(id) {
+    return $http({
+      method: 'GET',
+      url: '/api/decks/' + id
+    })
+      .then(function(resp) {
+        return resp.data;
       });
     },
 
