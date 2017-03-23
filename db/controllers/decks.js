@@ -49,9 +49,6 @@ exports.grabCurrent = function(id) {
 }
 
 // set the card to cast
-exports.setCurrent = function(id) {
-  return DeckModel.findOne({_id: id})
-  .then(function (res) {
-    return DeckModel.update({$set: {current: res}})
-  })
-}
+exports.setCurrent = function(deckID, slideID) {
+  return DeckModel.update({_id: deckID}, {$set: {current: slideID}});
+};
