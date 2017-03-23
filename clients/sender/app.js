@@ -56,11 +56,13 @@ angular.module('cardcast', [
         deck: getDecks
       }
     })
-    .when('/new', {
+    .when('/new/:id', {
       templateUrl: '/sender/controllers/new/new.html',
       controller: 'NewCtrl',
       resolve: {
-        user: authorize
+        user: authorize,
+        deck: getDeck
+
       }
     })  
     .when('/edit/:id', {
