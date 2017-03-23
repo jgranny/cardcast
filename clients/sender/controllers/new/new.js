@@ -40,7 +40,9 @@ angular.module('cardcast.new', [
       $scope.preview = $sanitize(Service.markDownCompile($scope.message));
     }
   };
-
+    $scope.goBack = function () {
+    $location.path('/deck/:' + deck._id)
+  }
   // Function is called initially to set the preview title
   $scope.changes();
 

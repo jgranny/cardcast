@@ -20,7 +20,6 @@ angular.module('cardcast.edit', [
     // Use the updateCard function from the Service factory
     Service.updateCard(cardInfo)
       .then(function(resp) {
-        console.log(resp)
         $location.path('/deck/:' + resp.deck);
       })
       .catch(console.log);
@@ -37,6 +36,9 @@ angular.module('cardcast.edit', [
       $scope.preview = $sanitize(Service.markDownCompile($scope.card.card));
     }
   };
+  $scope.goBack = function () {
+    $location.path('/deck/:' + card.deck)
+  }
 
   // Function is called initially to set the preview
   $scope.changes();
