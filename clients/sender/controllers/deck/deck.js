@@ -4,6 +4,7 @@ angular.module('cardcast.deck', [
 
 .controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, Service, deck) {
   $scope.deck = deck;
+  console.log(deck);
   // $scope.deck = {
   //   title: "Deck Title",
   //   current: "58d3f1a5d49b292ddd6953c5",

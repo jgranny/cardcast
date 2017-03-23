@@ -25,6 +25,7 @@ angular.module('cardcast', [
     return Service.getDecks();
   };
   var getDeck = function($route, Service) {
+    debugger;
     return Service.getDeck($route.current.params.id.slice(1));
   };
 
@@ -64,7 +65,7 @@ angular.module('cardcast', [
         deck: getDeck
 
       }
-    })  
+    })
     .when('/edit/:id', {
       templateUrl: '/sender/controllers/edit/edit.html',
       controller: 'EditCtrl',
@@ -79,7 +80,7 @@ angular.module('cardcast', [
       resolve: {
         user: authorize,
         deck: getDeck
-      }    
+      }
     })
     .otherwise({
       redirectTo: '/login'
