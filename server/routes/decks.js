@@ -48,6 +48,14 @@ router.post('/:id', helpers.isAuth, function(req, res, next) {
     });
 
 });
-
+router.get('/:id', helpers.isAuth, function(req, res, next) {
+  deckController.grabCurrent(req.body._id)
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+})
 
 module.exports = router;

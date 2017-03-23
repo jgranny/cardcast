@@ -19,6 +19,12 @@ angular.module('cardcast-receiver', [
     }));
   };
 
+  //TODO
+  //Send get request to decks to grab current card
+    //Change scope.text to current.text??
+  //Set up polling function (Also in senders)
+  
+
   //default message when no one is casting
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
 

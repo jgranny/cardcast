@@ -6,7 +6,7 @@ var cardSchema = new Schema({
   card: String,
   deck: {
     type: Schema.Types.ObjectId,
-    ref: 'deck'
+    ref: 'Deck'
   }
 });
 
