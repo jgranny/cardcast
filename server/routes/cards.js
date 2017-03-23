@@ -63,7 +63,7 @@ router.get('/:id', helpers.isAuth, function(req, res) {
 router.put('/:id', helpers.isAuth, function(req, res) {
   cardController.updateCard(req.body)
     .then(function(resp) {
-      res.sendStatus(200);
+      res.send(resp);
     })
     .catch(function(err) {
       console.error(err);

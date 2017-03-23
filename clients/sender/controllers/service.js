@@ -71,7 +71,7 @@ angular.module('cardcast.service', [])
         method: 'PUT',
         url: '/api/cards/' + card.id,
         data: card
-      });
+      }).then(res => res.data)
     },
 
     // Function that makes post request to '/api/cards/:id' to delete the card from the db

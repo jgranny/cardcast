@@ -30,7 +30,7 @@ angular.module('cardcast', [
 
   // get a specific card
   var getCard = function($route, Service) {
-    return Service.getCard($route.current.params.id);
+    return Service.getCard($route.current.params.id.slice(1));
   };
 
   $routeProvider
