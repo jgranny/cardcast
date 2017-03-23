@@ -23,7 +23,7 @@
 
   <div class="row">
     <div class="col-md-4">
-      <div ng-repeat="card in deck" class="card mdl-card mdl-shadow--4dp">
+      <div ng-repeat="card in cards" class="card mdl-card mdl-shadow--4dp">
         <div class="mdl-card__title">
           <h3 class="mdl-card__title-text">{{ card.title }}</h3>
         </div>
@@ -51,6 +51,6 @@
 </div>
 
 <!-- Add Card Button -->
-<a href="#!/new" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+<a href="#!/new/:{{deck._id}}" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
   <i class="material-icons">add</i>
 </a>
