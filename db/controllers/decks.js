@@ -1,4 +1,5 @@
 var DeckModel = require('../models/decks.js');
+var cards = require('./cards.js')
 
 // find all of the decks's cards in the database using their id
 exports.findAll = function() {
@@ -24,3 +25,19 @@ exports.updateDeck = function(card) {
 exports.deleteDeck = function(id) {
   return DeckModel.remove({_id: id});
 };
+
+// get the card currently being cast
+exports.grabCurrent = function(id) {
+  return DeckModel.findOne({_id: id})
+  .then(function(res) {
+    return cards.findOne(res.current)
+  })
+}
+
+// set the card to cast
+exports.setCurrent = function(id) {
+  return DeckModel.findOne({_id: id})
+  .then(function (res) {
+    return DeckModel.update({$set: {current: res}})
+  })
+}

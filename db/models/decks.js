@@ -5,8 +5,12 @@ var deckSchema = new Schema({
   title: String,
   cards: [{
     type: Schema.Types.ObjectId,
-    ref: 'deck'
-  }]
+    ref: 'Deck'
+  }],
+  current: {
+    type: Schema.Types.ObjectId,
+    ref: 'Card'
+  }
 });
 
 var DeckModel = mongoose.model('Deck', deckSchema);
