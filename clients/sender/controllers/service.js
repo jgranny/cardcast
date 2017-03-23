@@ -9,6 +9,16 @@ angular.module('cardcast.service', [])
     },
 
     // Function that makes get request to '/api/cards' to get user's deck from db
+    setCurrent: function(card) {
+      return $http({
+        method: 'PUT',
+        url: '/api/decks/' + card.deck,
+        data: card
+      }).then(res => {
+        return res.data})
+
+    },
+
     getDecks: function() {
       return $http({
         method: 'GET',

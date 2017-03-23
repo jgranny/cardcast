@@ -3,6 +3,10 @@ angular.module('cardcast.deck', [
 ])
 
 .controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, Service, deck) {
-  $scope.deck = deck;
-  console.log('EDITING DECK', deck);
+  $scope.deck = deck
+
+  $scope.setCurrent = function(card) {
+    Service.setCurrent(card)
+      .then(res=> console.log(res))
+  }
 });
