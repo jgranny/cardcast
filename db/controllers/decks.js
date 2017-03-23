@@ -1,5 +1,5 @@
 var DeckModel = require('../models/decks.js');
-var cards = require('cards.js')
+var cards = require('./cards.js')
 
 // find all of the decks's cards in the database using their id
 exports.findAll = function() {
