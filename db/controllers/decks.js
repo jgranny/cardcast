@@ -28,7 +28,14 @@ exports.deleteDeck = function(id) {
 
 exports.grabCurrent = function(id) {
   return DeckModel.findOne({_id: id})
-  .then(res => {
+  .then(function(res) {
     return cards.findOne(res.current)
+  })
+}
+
+exports.setCurrent = function(id) {
+  return DeckModel.findOne({_id: id})
+  .then(function (res) {
+    return DeckModel.update({$set: {current: res}})
   })
 }

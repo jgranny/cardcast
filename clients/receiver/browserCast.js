@@ -25,9 +25,14 @@ angular.module('cardcast-receiver', [
   //Set up polling function (Also in senders)
   $http({
     method: 'GET',
-    url: '/api/decks/:id'
+    url: '/api/decks/:id',
+    // dataType: 'jsonp',
+    headers: {'Content-Type': 'application/json'},
   }).then(function success(res) {
     //update the current card being displayed
+    console.log(res);
+  }, function error(res) {
+    console.error('---------browserCast-------->',res);
   })
 
   //default message when no one is casting
