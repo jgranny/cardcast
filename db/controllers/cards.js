@@ -2,7 +2,7 @@ var CardModel = require('../models/cards.js');
 
 // find all of the user's cards in the database using their id
 exports.findAll = function(id) {
-  return CardModel.find({user: id});
+  return CardModel.find({deck: id});
 };
 
 // insert a new card into the database

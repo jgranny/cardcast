@@ -17,15 +17,9 @@ router.get('/', helpers.isAuth, function(req, res, next) {
 
 });
 router.get('/:id', helpers.isAuth, function(req, res) {
-  let deck;
   deckController.findOne(req.params.id)
     .then(function(result) {
-      deck = result;
-      return cardController.findAll(deck._id);
-    })
-    .then(function(results) {
-      deck.cards = results;
-      res.send(deck);
+      res.send(result);
     })
     .catch(function(err) {
       console.error(err);

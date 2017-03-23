@@ -1,19 +1,28 @@
 var DeckModel = require('../models/decks.js');
-var cards = require('./cards.js')
-
-// find all of the decks's decks in the database using their id
-exports.findAll = function() {
-  return DeckModel.find();
-};
+var CardController = require('./cards.js');
 
 // insert a new deck into the database
 exports.insertOne = function(deck) {
   return DeckModel.create(deck);
 };
 
+// find all of the user's cards in the database using their id
+exports.findAll = function() {
+  return DeckModel.find();
+};
+
 // find a deck in the database using the deck id
 exports.findOne = function(id) {
-  return DeckModel.findOne({_id: id});
+  return DeckModel.findOne({_id: id}).then(function(deck){
+    return CardController.findAll(deck._id).then(function(cards){
+      // TODO: don't hard code the properties
+      return {
+        title: deck.title,
+        current: deck.current,
+        cards: cards.slice()
+      };
+    });
+  });
 };
 
 // update the deck info in the database

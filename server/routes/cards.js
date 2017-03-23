@@ -26,7 +26,7 @@ router.post('/', helpers.isAuth, function(req, res) {
     card: req.body.card,
     deck: req.body.deck
   };
-
+  console.log('CARD INFO', cardInfo);
   cardController.insertOne(cardInfo)
     .then(function(resp) {
       res.send(resp)
