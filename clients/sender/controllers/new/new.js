@@ -24,7 +24,7 @@ angular.module('cardcast.new', [
         console.log("deck id", deck._id)
         console.log("should match .deck", cardInfo)
         console.log("actual response from server", resp)
-        $location.path('/deck/:' + resp.deck);
+        $location.path('/deck/' + resp.deck);
       });
 
   };

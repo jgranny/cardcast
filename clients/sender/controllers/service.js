@@ -14,12 +14,12 @@ angular.module('cardcast.service', [])
         method: 'GET',
         url: '/api/decks'
       })
-        .then(function(resp) {
-          return resp.data;
-        })
-        .catch(function(err) {
-          console.error(err);
-        });
+      .then(function(resp) {
+        return resp.data;
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
     },
     deleteDeck: function(deck) {
       return $http({
@@ -35,11 +35,11 @@ angular.module('cardcast.service', [])
         data: deck
       }).then(res => res.data)
     },
-     getDeck: function(id) {
-    return $http({
-      method: 'GET',
-      url: '/api/decks/' + id
-    })
+    getDeck: function(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/decks/' + id
+      })
       .then(function(resp) {
         return resp.data;
       });
@@ -60,9 +60,9 @@ angular.module('cardcast.service', [])
         method: 'GET',
         url: '/api/cards/' + id
       })
-        .then(function(resp) {
-          return resp.data;
-        });
+      .then(function(resp) {
+        return resp.data;
+      });
     },
 
     // Function that makes put request to '/api/cards/:id' to update the card info in the db
@@ -91,15 +91,15 @@ angular.module('cardcast.service', [])
 
     loggedIn: function(){
 
-        $http({
+      $http({
         method: 'GET',
         url: '/api/users'
       })
       .then(function(res) {
-          $location.path('/cards');
+        $location.path('/cards');
       })
       .catch(function(err) {
-         $timeout(function() {
+        $timeout(function() {
           $location.path('/login');
         });
       })

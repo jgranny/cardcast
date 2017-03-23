@@ -8,9 +8,13 @@
 
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">
-            Edit Deck
+            {{deck.title}}
+            <!-- <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" ng-model="deck.title" type="text" id="edit-deck-title">
+              <label class="mdl-textfield__label" for="edit-deck-title"></label>
+            </div> -->
+            <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
             <button ng-click="shareDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Share</button>
-            <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">My Deck</button>
             <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
           </h1>
         </div>
@@ -20,16 +24,16 @@
     </div>
   </div>
 
-
+{{console.log(deck.cards)}}
   <div class="row">
     <div class="col-md-4">
-      <div ng-repeat="card in cards" class="card mdl-card mdl-shadow--4dp">
+      <div ng-repeat="card in deck.cards" class="card mdl-card mdl-shadow--4dp">
         <div class="mdl-card__title">
           <h3 class="mdl-card__title-text">{{ card.title }}</h3>
         </div>
         <div class="mdl-card__actions mdl-card--border">
 
-          <a href="#!/edit/:{{card._id}}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+          <a href="#!/edit/{{card._id}}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
           <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
         </div>
       </div>
@@ -51,6 +55,6 @@
 </div>
 
 <!-- Add Card Button -->
-<a href="#!/new/:{{deck._id}}" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+<a href="#!/new/{{deck._id}}" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
   <i class="material-icons">add</i>
 </a>

@@ -1,27 +1,36 @@
 var DeckModel = require('../models/decks.js');
-var cards = require('./cards.js')
+var CardController = require('./cards.js');
 
-// find all of the decks's cards in the database using their id
+// insert a new deck into the database
+exports.insertOne = function(deck) {
+  return DeckModel.create(deck);
+};
+
+// find all of the user's cards in the database using their id
 exports.findAll = function() {
   return DeckModel.find();
 };
 
-// insert a new card into the database
-exports.insertOne = function(card) {
-  return DeckModel.create(card);
-};
-
-// find a card in the database using the card id
+// find a deck in the database using the deck id
 exports.findOne = function(id) {
-  return DeckModel.findOne({_id: id});
+  return DeckModel.findOne({_id: id}).then(function(deck){
+    return CardController.findAll(deck._id).then(function(cards){
+      // TODO: don't hard code the properties
+      return {
+        title: deck.title,
+        current: deck.current,
+        cards: cards.slice()
+      };
+    });
+  });
 };
 
-// update the card info in the database
-exports.updateDeck = function(card) {
-  return DeckModel.update({_id: card.id}, {$set: {title: card.title, card: card.card}});
+// update the deck info in the database
+exports.updateDeck = function(deck) {
+  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title, current: deck.current}});
 };
 
-// delete a card from the database
+// delete a deck from the database
 exports.deleteDeck = function(id) {
   return DeckModel.remove({_id: id});
 };

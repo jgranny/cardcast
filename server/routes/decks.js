@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var deckController = require('../../db/controllers/decks.js');
+var cardController = require('../../db/controllers/cards.js');
 var helpers = require('../helpers');
 
 
@@ -17,24 +18,13 @@ router.get('/', helpers.isAuth, function(req, res, next) {
 });
 router.get('/:id', helpers.isAuth, function(req, res) {
   deckController.findOne(req.params.id)
-    .then(function(resp) {
-      res.send(resp);
+    .then(function(result) {
+      res.send(result);
     })
     .catch(function(err) {
       console.error(err);
     });
 });
-
-// router.get('/:id', function(req, res, next) {
-//   deckController.grabCurrent(req.body._id)
-//   .then(function(resp) {
-//     console.log('------sending our error----------');
-//     res.send(resp);
-//   })
-//   .catch(function(err) {
-//     console.error(err);
-//   });
-// })
 
 router.post('/', helpers.isAuth, function(req, res) {
   var deckInfo = {
