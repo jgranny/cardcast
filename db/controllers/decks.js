@@ -17,6 +17,7 @@ exports.findOne = function(id) {
     return CardController.findAll(deck._id).then(function(cards){
       // TODO: don't hard code the properties
       return {
+        _id: deck._id,
         title: deck.title,
         current: deck.current,
         cards: cards.slice()
@@ -28,6 +29,10 @@ exports.findOne = function(id) {
 // update the deck info in the database
 exports.updateDeck = function(deck) {
   return DeckModel.update({_id: deck.id}, {$set: {title: deck.title, current: deck.current}});
+};
+
+exports.setCurrent = function(deckID, slideID) {
+  return DeckModel.update({_id: deckID}, {$set: {current: slideID}});
 };
 
 // delete a deck from the database
