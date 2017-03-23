@@ -25,13 +25,12 @@ angular.module('cardcast', [
     return Service.getDecks();
   };
   var getDeck = function($route, Service) {
-    debugger;
-    return Service.getDeck($route.current.params.id.slice(1));
+    return Service.getDeck($route.current.params.id);
   };
 
   // get a specific card
   var getCard = function($route, Service) {
-    return Service.getCard($route.current.params.id.slice(1));
+    return Service.getCard($route.current.params.id);
   };
 
   $routeProvider

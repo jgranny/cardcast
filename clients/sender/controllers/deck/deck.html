@@ -8,10 +8,11 @@
 
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">
-            <div class="mdl-textfield mdl-js-textfield">
+            {{deck.title}}
+            <!-- <div class="mdl-textfield mdl-js-textfield">
               <input class="mdl-textfield__input" ng-model="deck.title" type="text" id="edit-deck-title">
               <label class="mdl-textfield__label" for="edit-deck-title"></label>
-            </div>
+            </div> -->
             <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
             <button ng-click="shareDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Share</button>
             <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
@@ -23,7 +24,7 @@
     </div>
   </div>
 
-
+{{console.log(deck.cards)}}
   <div class="row">
     <div class="col-md-4">
       <div ng-repeat="card in deck.cards" class="card mdl-card mdl-shadow--4dp">
@@ -54,6 +55,6 @@
 </div>
 
 <!-- Add Card Button -->
-<a href="#!/new/:{{deck._id}}" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+<a href="#!/new/{{deck._id}}" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
   <i class="material-icons">add</i>
 </a>
