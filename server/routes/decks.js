@@ -8,6 +8,7 @@ router.get('/', helpers.isAuth, function(req, res, next) {
   // req has a user object given by passport
   deckController.findAll()
     .then(function(resp) {
+      console.log(">>>>",resp[resp.length-1])
       res.send(resp);
     })
     .catch(function(err) {
@@ -15,6 +16,15 @@ router.get('/', helpers.isAuth, function(req, res, next) {
     });
 
 });
+router.get('/:id', helpers.isAuth, function(req, res) {
+  deckController.findOne(req.params.id)
+    .then(function(resp) {
+      res.send(resp);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+}); 
 
 router.post('/', helpers.isAuth, function(req, res) {
   var deckInfo = {
@@ -23,7 +33,7 @@ router.post('/', helpers.isAuth, function(req, res) {
 
   deckController.insertOne(deckInfo)
     .then(function(resp) {
-      res.sendStatus(200);
+      res.send(resp)
     })
     .catch(function(err) {
       console.error(err);

@@ -21,8 +21,12 @@ angular.module('cardcast', [
   };
 
   // get a deck for a specific user
-  var getDeck = function(Service) {
-    return Service.getDeck();
+  var getDecks = function(Service) {
+    return Service.getDecks();
+  };
+  var getDeck = function($route, Service) {
+    console.log($route.current.params.id.slice(1))
+    return Service.getDeck($route.current.params.id.slice(1));
   };
 
   // get a specific card
@@ -50,7 +54,7 @@ angular.module('cardcast', [
         // this makes sure all data is loaded from the database before the views load
         // go to the MainCtrl to see where these are used.
         user: authorize,
-        deck: getDeck
+        deck: getDecks
       }
     })
     .when('/new', {
@@ -68,11 +72,12 @@ angular.module('cardcast', [
         card: getCard
       }
     })
-    .when('/deck', {
+    .when('/deck/:id', {
       templateUrl: '/sender/controllers/deck/deck.html',
       controller: 'DeckCtrl',
       resolve: {
         user: authorize,
+        deck: getDeck
       }    
     })
     .otherwise({
