@@ -26,6 +26,7 @@ exports.deleteDeck = function(id) {
   return DeckModel.remove({_id: id});
 };
 
+// get the card currently being cast
 exports.grabCurrent = function(id) {
   return DeckModel.findOne({_id: id})
   .then(function(res) {
@@ -33,6 +34,7 @@ exports.grabCurrent = function(id) {
   })
 }
 
+// set the card to cast
 exports.setCurrent = function(id) {
   return DeckModel.findOne({_id: id})
   .then(function (res) {

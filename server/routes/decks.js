@@ -25,16 +25,16 @@ router.get('/:id', helpers.isAuth, function(req, res) {
     });
 });
 
-router.get('/:id', function(req, res, next) {
-  deckController.grabCurrent(req.body._id)
-  .then(function(resp) {
-    console.log('------sending our error----------');
-    res.send(resp);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
-})
+// router.get('/:id', function(req, res, next) {
+//   deckController.grabCurrent(req.body._id)
+//   .then(function(resp) {
+//     console.log('------sending our error----------');
+//     res.send(resp);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });
+// })
 
 router.post('/', helpers.isAuth, function(req, res) {
   var deckInfo = {
