@@ -50,5 +50,16 @@ router.post('/:id', helpers.isAuth, function(req, res, next) {
     });
 
 });
+router.put('/:id', helpers.isAuth, function(req, res) {
+  console.log(req.body)
+  deckController.setCurrent(req.body.deck, req.body._id)
+    .then(function(resp) {
+      console.log(resp)
+      res.send(resp);
+    })
+    .catch(function(err) {
+      console.error(err);
+    });
+});
 
 module.exports = router;
