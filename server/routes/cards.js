@@ -61,8 +61,10 @@ router.get('/:id', helpers.isAuth, function(req, res) {
 
 // handle put request to '/api/cards/:id' by using updateCard function from cardController
 router.put('/:id', helpers.isAuth, function(req, res) {
+  console.log('BODY', req.body);
   cardController.updateCard(req.body)
     .then(function(resp) {
+      console.log('RESPONSE', resp);
       res.send(resp);
     })
     .catch(function(err) {
