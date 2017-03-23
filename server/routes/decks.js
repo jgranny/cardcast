@@ -16,10 +16,11 @@ router.get('/', helpers.isAuth, function(req, res, next) {
     });
 
 });
-router.get('/:id', helpers.isAuth, function(req, res) {
+router.get('/:id', helpers.isAuth, function(req, resp) {
   deckController.findOne(req.params.id)
     .then(function(result) {
-      res.send(result);
+
+      resp.send(result);
     })
     .catch(function(err) {
       console.error(err);
