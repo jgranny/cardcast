@@ -20,7 +20,7 @@ angular.module('cardcast.edit', [
     // Use the updateCard function from the Service factory
     Service.updateCard(cardInfo)
       .then(function(resp) {
-        $location.path('/deck/:' + resp.deck);
+        $location.path('/deck/' + resp.deck);
       })
       .catch(console.log);
   };
