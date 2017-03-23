@@ -4,7 +4,7 @@ angular.module('cardcast.main', [])
 .controller('MainCtrl', function($scope, $timeout, $location, Service, user, deck) {
 
   // Set $scope.deck with info received from deck resolve
-  $scope.deck = deck;
+  $scope.decks = deck;
   $scope.currentDeck = {};
 
   //toggles popup warning using 'ng-show' in main.html
@@ -58,8 +58,8 @@ angular.module('cardcast.main', [])
   $scope.deleteDeck = function(deck) {
     Service.deleteDeck(deck)
       .then(function(resp) {
-        var index = $scope.deck.indexOf(deck);
-        $scope.deck.splice(index, 1);
+        var index = $scope.decks.indexOf(deck);
+        $scope.decks.splice(index, 1);
         $scope.showDelete = false;
       });
   };
@@ -86,7 +86,7 @@ angular.module('cardcast.main', [])
     Service.createDeck(deckInfo)
       .then(function(resp) {
         console.log(resp._id)
-        $location.path('/deck/:' + resp._id);
+        $location.path('/deck/:');
       })
 
   };
