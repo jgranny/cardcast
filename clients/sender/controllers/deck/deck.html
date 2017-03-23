@@ -29,7 +29,7 @@
         </div>
         <div class="mdl-card__actions mdl-card--border">
 
-          <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+          <a href="#!/edit/:{{card.id}}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
           <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
         </div>
       </div>
@@ -51,6 +51,6 @@
 </div>
 
 <!-- Add Card Button -->
-<a ng-click="addCard()" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+<a href="#!/new" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
   <i class="material-icons">add</i>
 </a>

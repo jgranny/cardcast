@@ -24,12 +24,12 @@ router.post('/', helpers.isAuth, function(req, res) {
   var cardInfo = {
     title: req.body.title,
     card: req.body.card,
-    user: req.user._id
+    deck: req.user._id
   };
 
   cardController.insertOne(cardInfo)
     .then(function(resp) {
-      res.sendStatus(200);
+      res.send(resp)
     })
     .catch(function(err) {
       console.error(err);

@@ -3,7 +3,6 @@ angular.module('cardcast.new', [
 ])
 
 .controller('NewCtrl', function($scope, $sanitize, $location, Service) {
-
   // Declare message in scope
   $scope.message = '';
 
@@ -19,7 +18,9 @@ angular.module('cardcast.new', [
     // Use the createCard function from the Service factory
     Service.createCard(cardInfo)
       .then(function(resp) {
-        $location.path('/cards');
+
+        console.log(resp)
+        $location.path('/deck/:' + resp.deck);
       });
 
   };

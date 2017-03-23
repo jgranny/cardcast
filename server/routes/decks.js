@@ -8,7 +8,6 @@ router.get('/', helpers.isAuth, function(req, res, next) {
   // req has a user object given by passport
   deckController.findAll()
     .then(function(resp) {
-      console.log(">>>>",resp[resp.length-1])
       res.send(resp);
     })
     .catch(function(err) {
