@@ -36,7 +36,6 @@ angular.module('cardcast.service', [])
       }).then(res => res.data)
     },
      getDeck: function(id) {
-      console.log(id)
     return $http({
       method: 'GET',
       url: '/api/decks/' + id
