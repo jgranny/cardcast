@@ -18,8 +18,6 @@ angular.module('cardcast.new', [
     // Use the createCard function from the Service factory
     Service.createCard(cardInfo)
       .then(function(resp) {
-
-        console.log(resp)
         $location.path('/deck/:' + resp.deck);
       });
 
