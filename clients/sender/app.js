@@ -25,7 +25,7 @@ angular.module('cardcast', [
     return Service.getDecks();
   };
   var getDeck = function($route, Service) {
-    console.log($route.current.params.id.slice(1))
+    console.log($route.current.params.id)
     return Service.getDeck($route.current.params.id.slice(1));
   };
 

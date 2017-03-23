@@ -33,18 +33,18 @@
   </div>
 
   <!-- Iterates through all the users cards and displays them -->
-  <div ng-repeat="card in deck" class="row">
+  <div ng-repeat="deck in decks" class="row">
     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
       <div class="card mdl-card mdl-shadow--4dp">
 
         <div class="mdl-card__title">
-          <h3 class="mdl-card__title-text">{{ card.title }}</h3>
+          <h3 class="mdl-card__title-text">{{ deck.title }}</h3>
         </div>
         <div class="mdl-card__actions mdl-card--border">
 
-          <a href="#!/deck/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
-          <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(card)"/>
+          <a href="#!/deck/:{{deck.id}}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
+          <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="warnDelete(deck)"/>
         </div>
 
       </div>
