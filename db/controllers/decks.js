@@ -28,7 +28,7 @@ exports.findOne = function(id) {
 
 // update the deck info in the database
 exports.updateDeck = function(deck) {
-  return DeckModel.update({_id: deck.id}, {$set: {title: deck.title, current: deck.current}});
+  return DeckModel.update({_id: deck._id}, {$set: {title: deck.title, current: deck.current}});
 };
 
 exports.setCurrent = function(deckID, slideID) {
