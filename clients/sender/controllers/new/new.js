@@ -21,9 +21,6 @@ angular.module('cardcast.new', [
     // Use the createCard function from the Service factory
     Service.createCard(cardInfo)
       .then(function(resp) {
-        console.log("deck id", deck._id)
-        console.log("should match .deck", cardInfo)
-        console.log("actual response from server", resp)
         $location.path('/deck/' + resp.deck);
       });
 

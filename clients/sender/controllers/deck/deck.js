@@ -7,7 +7,7 @@ angular.module('cardcast.deck', [
 
   $scope.setCurrent = function(card) {
     Service.setCurrent(card)
-      .then(res=> console.log(res))
+      .then(res=> console.log("card Casted"))
   }
 
   // Deletes selected card from the database

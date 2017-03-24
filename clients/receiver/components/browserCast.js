@@ -4,8 +4,6 @@ angular.module('cardcast-receiver', [
 //set up  controller for Receiver.
 .controller('MainController', function($scope, $sanitize,$location, Markdown, $http, $timeout) {
   // //TODO
-  // $locationProvider.html5Mode(true);
-  // console.log($locationProvider)
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
   //Set up polling function (Also in senders)
@@ -29,6 +27,7 @@ angular.module('cardcast-receiver', [
       console.error(res)
     })
   };
+  //hacky way of getting the deck id
   var deckId = $location.absUrl().split("/").pop()
   //Artificial test of polling
   newCardRequest(deckId);
