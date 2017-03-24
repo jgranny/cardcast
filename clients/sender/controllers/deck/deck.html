@@ -42,7 +42,7 @@
     <div class="card-preview col-md-8">
       <div class="mdl-card mdl-shadow--4dp">
         <div class="mdl-card__supporting-text">
-          <div ng-bind-html="preview"></div>
+          <iframe ng-src="{{preview}}" ng-model="deck.current" class="preview"></iframe>
         </div>
       </div>
     </div>

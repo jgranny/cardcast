@@ -2,9 +2,9 @@ angular.module('cardcast.deck', [
   'ngSanitize'
 ])
 
-.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, Service, deck) {
+.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, $sce, Service, deck) {
   $scope.deck = deck
-
+  $scope.preview = $sce.trustAsResourceUrl("/receiver/" + deck.current);
   $scope.setCurrent = function(card) {
     Service.setCurrent(card)
       .then(res=> console.log("card Casted"))
