@@ -17,7 +17,7 @@ angular.module('cardcast.auth', [])
 
       Auth.login($scope.username, $scope.password)
         .then(function() {
-          $location.path('/cards');
+          $location.path('/decks');
         })
         .catch(function() {
           $scope.warning = 'Invalid username or password.';
@@ -48,7 +48,7 @@ angular.module('cardcast.auth', [])
       // if all validations pass, signup the user
       Auth.signup({username: username, password: password})
         .then(function() {
-          $location.path('/cards');
+          $location.path('/decks');
         })
         .catch(function() {
           // if signup throws an error, user already exists

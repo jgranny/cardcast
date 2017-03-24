@@ -21,7 +21,7 @@ angular.module('cardcast.new', [
     // Use the createCard function from the Service factory
     Service.createCard(cardInfo)
       .then(function(resp) {
-        $location.path('/deck/' + resp.deck);
+        $location.path('/decks/' + resp.deck);
       });
 
   };
@@ -38,7 +38,7 @@ angular.module('cardcast.new', [
     }
   };
     $scope.goBack = function () {
-    $location.path('/deck/' + deck._id)
+    $location.path('/decks/' + deck._id)
   }
   // Function is called initially to set the preview title
   $scope.changes();

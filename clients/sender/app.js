@@ -42,7 +42,7 @@ angular.module('cardcast', [
       templateUrl: '/sender/controllers/auth/signup.html',
       controller: 'AuthCtrl'
     })
-    .when('/cards', {
+    .when('/decks', {
       templateUrl: '/sender/controllers/main/main.html',
       controller: 'MainCtrl',
       resolve: {
@@ -65,7 +65,7 @@ angular.module('cardcast', [
 
       }
     })
-    .when('/edit/:id', {
+    .when('/decks/card/:id/edit', {
       templateUrl: '/sender/controllers/edit/edit.html',
       controller: 'EditCtrl',
       resolve: {
@@ -73,7 +73,7 @@ angular.module('cardcast', [
         card: getCard
       }
     })
-    .when('/deck/:id', {
+    .when('/decks/:id', {
       templateUrl: '/sender/controllers/deck/deck.html',
       controller: 'DeckCtrl',
       resolve: {

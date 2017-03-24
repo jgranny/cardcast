@@ -19,8 +19,8 @@ angular.module('cardcast.service', [])
     },
 
     getDecks: function() {
+
       return $http({
-        method: 'GET',
         url: '/api/decks'
       })
       .then(function(resp) {
@@ -56,8 +56,8 @@ angular.module('cardcast.service', [])
         method: 'GET',
         url: '/api/decks/' + id
       })
-      .then(function(resp) {
-        return resp.data;
+      .then(function({data}) {
+        return data;
       });
     },
 
@@ -112,7 +112,7 @@ angular.module('cardcast.service', [])
         url: '/api/users'
       })
       .then(function(res) {
-        $location.path('/cards');
+        $location.path('/decks');
       })
       .catch(function(err) {
         $timeout(function() {
