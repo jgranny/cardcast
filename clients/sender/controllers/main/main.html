@@ -18,7 +18,7 @@
 
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">
-            Your Deck
+            Your Decks
             <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
           </h1>
         </div>
@@ -39,7 +39,20 @@
       <div class="card mdl-card mdl-shadow--4dp">
 
         <div class="mdl-card__title">
-          <h3 class="mdl-card__title-text">{{ deck.title }}</h3>
+          <h3
+            class="mdl-card__title-text" 
+           ng-click="showDetails = !showDetails"
+          >{{deck.title}}</h3>
+
+
+
+          <div 
+          ng-keyup="$event.keyCode == 13 ? handleSubmit(deck) : null "
+          ng-show="showDetails">
+              <input class="mdl-textfield__input" ng-model="deck.title" type="text">
+            
+            </div>
+
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <a href="#!/deck/{{deck._id}}"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>

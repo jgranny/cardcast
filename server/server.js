@@ -40,6 +40,7 @@ require('./passport/init')(passport);
 app.use('/', clients);
 app.use('/api/users', users(passport));
 app.use('/api/decks', decks);
+
 app.use('/api/cards', cards);
 
 // serve static files

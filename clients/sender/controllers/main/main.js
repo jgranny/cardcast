@@ -6,12 +6,11 @@ angular.module('cardcast.main', [])
   // Set $scope.deck with info received from deck resolve
   $scope.decks = deck;
   $scope.currentDeck = {};
-
-  //toggles popup warning using 'ng-show' in main.html
   $scope.showWarning = false;
   $scope.showDelete = false;
   $scope.username = user;
   $scope.title = 'Untitled';
+   $scope.handleSubmit = (deck) => Service.updateDeck(deck)
 
 
   // First checks for a session and sees if anyone else is currently casting.
