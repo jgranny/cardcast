@@ -2,10 +2,11 @@ angular.module('cardcast.deck', [
   'ngSanitize'
 ])
 
-.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, Service, deck) {
-  $scope.deck = deck
-
+.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, $sce, Service, deck) {
+  $scope.deck = deck;
+  $scope.preview = '';
   $scope.setCurrent = function(card) {
+    $scope.deck.current = card._id;
     Service.setCurrent(card)
       .then(res=> console.log("card Casted"))
   }
@@ -18,4 +19,9 @@ angular.module('cardcast.deck', [
         $scope.deck.cards.splice(index, 1);
       });
   };
+
+  $scope.$watch('deck.current', function(newValue, oldValue) {
+    let content = $scope.deck.cards.filter(card => card._id === newValue)[0].card;
+    $scope.preview = $sanitize(Service.markDownCompile(content));
+  });
 });
