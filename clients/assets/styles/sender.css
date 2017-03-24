@@ -83,7 +83,8 @@ p {
   color: #757575;
 }
 
-.card-deck button {
+.card-deck button,
+.card-deck .mdl-button {
   margin-left: 15px;
 }
 

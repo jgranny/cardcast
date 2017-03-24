@@ -13,10 +13,10 @@
               <input class="mdl-textfield__input" ng-model="deck.title" type="text" id="edit-deck-title">
               <label class="mdl-textfield__label" for="edit-deck-title"></label>
             </div> -->
-            <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
-            <button ng-click="shareDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Share</button>
-            <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
           </h1>
+          <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
+          <a href="/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Projector</a>
+          <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
         </div>
 
       </div>
