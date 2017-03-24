@@ -2,8 +2,10 @@ angular.module('cardcast-receiver', [
   'ngSanitize'
 ])
 //set up  controller for Receiver.
-.controller('MainController', function($scope, $sanitize, Markdown, $http, $timeout) {
-  //TODO
+.controller('MainController', function($scope, $sanitize,$location, Markdown, $http, $timeout) {
+  // //TODO
+  // $locationProvider.html5Mode(true);
+  // console.log($locationProvider)
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
   //Set up polling function (Also in senders)
@@ -27,9 +29,9 @@ angular.module('cardcast-receiver', [
       console.error(res)
     })
   };
-
+  var deckId = $location.absUrl().split("/").pop()
   //Artificial test of polling
-  //newCardRequest('58d2ec5a63d0c867c5ec779f');
+  newCardRequest(deckId);
 
   //default message when no one is casting
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
