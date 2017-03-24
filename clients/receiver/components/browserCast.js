@@ -14,6 +14,8 @@ angular.module('cardcast-receiver', [
       // dataType: 'jsonp',
       headers: {'Content-Type': 'application/json'},
     }).then(function success(res) {
+        $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
+
       console.info(res.data.current)
       res.data.cards.forEach((card) => {
         if (card._id === res.data.current) {
@@ -33,7 +35,6 @@ angular.module('cardcast-receiver', [
   newCardRequest(deckId);
 
   //default message when no one is casting
-  $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
 
 })
 .factory('Markdown', function() {
