@@ -7,7 +7,6 @@ angular.module('cardcast.service', [])
     markDownCompile: function(text) {
       return marked(text);
     },
-
     // Function that makes get request to '/api/cards' to get user's deck from db
     setCurrent: function(card) {
       return $http({
