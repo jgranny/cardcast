@@ -56,8 +56,8 @@ angular.module('cardcast', [
         deck: getDecks
       }
     })
-    .when('/new/:id', {
-      templateUrl: '/sender/controllers/new/new.html',
+    .when('/decks/:id/new', {
+      templateUrl: '/sender/controllers/newCard/newCard.html',
       controller: 'NewCtrl',
       resolve: {
         user: authorize,
@@ -66,7 +66,7 @@ angular.module('cardcast', [
       }
     })
     .when('/decks/card/:id/edit', {
-      templateUrl: '/sender/controllers/edit/edit.html',
+      templateUrl: '/sender/controllers/cardEdit/cardEdit.html',
       controller: 'EditCtrl',
       resolve: {
         user: authorize,
@@ -93,7 +93,7 @@ angular.module('cardcast', [
 
   $rootScope.goToDeck = function() {
     $timeout(function() {
-      $location.path('/cards');
+      $location.path('/decks');
     });
   };
 
