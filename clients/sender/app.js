@@ -5,6 +5,7 @@ angular.module('cardcast', [
   'cardcast.auth',
   'cardcast.service',
   'cardcast.deck',
+  'cardcast-receiver',
   'cardcast.edit'
 ])
 
@@ -81,6 +82,11 @@ angular.module('cardcast', [
         deck: getDeck
       }
     })
+    .when('/receiver/:id', {
+      templateUrl: '/sender/controllers/receiver/receiver.html',
+      controller: 'ReceiverCtrl'
+    })
+
     .otherwise({
       redirectTo: '/login'
     });
