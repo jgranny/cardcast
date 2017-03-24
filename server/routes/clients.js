@@ -12,4 +12,10 @@ router.get('/receiver', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../../clients/receiver/index.html'));
 });
 
+router.get('/receiver/:id', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../../clients/receiver/index.html'));
+});
+
+
+
 module.exports = router;
