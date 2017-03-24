@@ -7,10 +7,10 @@ angular.module('cardcast-receiver', [
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
   //Set up polling function (Also in senders)
-  var newCardRequest = function () {
+  var newCardRequest = function (deckId) {
     $http({
       method: 'GET',
-      url: '/api/decks/58d2ec5a63d0c867c5ec779f',
+      url: `/api/decks/${deckId}`,
       // dataType: 'jsonp',
       headers: {'Content-Type': 'application/json'},
     }).then(function success(res) {
@@ -19,7 +19,7 @@ angular.module('cardcast-receiver', [
         if (card._id === res.data.current) {
           $scope.text = card.card;
 
-          $timeout(newCardRequest, 1000);
+          $timeout(function(){newCardRequest(deckId)}, 1000);
         }
       })
       //update the current card being displayed
@@ -28,7 +28,8 @@ angular.module('cardcast-receiver', [
     })
   };
 
-  newCardRequest();
+  //Artificial test of polling
+  //newCardRequest('58d2ec5a63d0c867c5ec779f');
 
   //default message when no one is casting
   $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
