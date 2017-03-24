@@ -37,7 +37,7 @@ angular.module('cardcast.edit', [
     }
   };
   $scope.goBack = function () {
-    $location.path('/deck/:' + card.deck)
+    $location.path('/deck/' + card.deck)
   }
 
   // Function is called initially to set the preview

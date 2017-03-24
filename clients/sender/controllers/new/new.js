@@ -41,7 +41,7 @@ angular.module('cardcast.new', [
     }
   };
     $scope.goBack = function () {
-    $location.path('/deck/:' + deck._id)
+    $location.path('/deck/' + deck._id)
   }
   // Function is called initially to set the preview title
   $scope.changes();
