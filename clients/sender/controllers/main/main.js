@@ -84,7 +84,7 @@ angular.module('cardcast.main', [])
     // Use the createCard function from the Service factory
     Service.createDeck(deckInfo)
       .then(function(resp) {
-        $location.path('/deck/'+resp._id);
+        $location.path('/decks/'+resp._id);
       })
 
   };
