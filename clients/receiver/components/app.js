@@ -97,4 +97,16 @@ angular.module('cardcast-receiver', [
   return {
     compile: compile
   };
-});
+})
+.directive('projector', ['$window', function($window){
+  return {
+    restrict: 'E',
+    scope: { content: '=' },
+    templateUrl: '/assets/projector.html',
+    link: function($scope, $element){
+      const aspectRatio = $window.innerWidth / $window.innerHeight;
+      const width = $element.find('div')[0].offsetWidth;
+      $scope.height = width / aspectRatio + 'px';
+    }
+  }
+}]);

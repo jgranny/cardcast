@@ -271,7 +271,7 @@ angular.module('cardcast', [
   return {
     restrict: 'E',
     scope: { content: '=' },
-    template: `<div class="projector" ng-style="{height: height}" ><div class="canvas" ng-bind-html="content"></div></div>`,
+    templateUrl: '/assets/projector.html',
     link: function($scope, $element){
       const aspectRatio = $window.innerWidth / $window.innerHeight;
       const width = $element.find('div')[0].offsetWidth;
