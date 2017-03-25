@@ -1,4 +1,4 @@
 module.exports = {
-  port: 8000,
+  port: 8080,
   sessionSecret: 'RANDOM-SECRET-KEY'
 };
