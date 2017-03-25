@@ -5,3 +5,4 @@ data/
 ._*
 .env
 clients/assets/config/config.js
+config.js
