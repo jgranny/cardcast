@@ -266,4 +266,16 @@ angular.module('cardcast', [
     scope: { action: '&' },
     template: `<a ng-click="action()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp"><i class="material-icons">add</i></a>`
   };
-});
+})
+.directive('projector', ['$window', function($window){
+  return {
+    restrict: 'E',
+    scope: { content: '=' },
+    template: `<div class="projector" ng-style="{height: height}" ><div class="canvas" ng-bind-html="content"></div></div>`,
+    link: function($scope, $element){
+      const aspectRatio = $window.innerWidth / $window.innerHeight;
+      const width = $element.find('div')[0].offsetWidth;
+      $scope.height = width / aspectRatio + 'px';
+    }
+  }
+}]);

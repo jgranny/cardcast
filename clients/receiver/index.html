@@ -22,16 +22,7 @@
     <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
   </head>
   <body>
-
-    <div class="card-canvas mdl-card mdl-shadow--6dp" ng-controller="MainController">
-      <div class="mdl-card__supporting-text">
-
-        <!-- This is what actually gets cast to the screen -->
-        <div class="markdown" ng-bind-html="text"></div>
-      </div>
-    </div>
-
-
+    <projector content="text"></projector>
     <script src="/receiver/components/app.js"></script>
   </body>
 </html>

@@ -7,6 +7,8 @@ angular.module('cardcast-receiver', [
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
 
+  $scope.text = 'Loading...';
+
   //Set up polling function (Also in senders)
   $scope.newCardRequest = function () {
     $http({
@@ -31,7 +33,7 @@ angular.module('cardcast-receiver', [
       console.error(res)
     })
   };
-  
+
   $scope.newCardRequest();
   longPolling = $interval(function(){$scope.newCardRequest()}, 1000);
 
