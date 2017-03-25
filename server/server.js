@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
@@ -7,6 +8,12 @@ var clients = require('./routes/clients');
 var users = require('./routes/users');
 var cards = require('./routes/cards');
 var decks = require('./routes/decks')
+
+// make sure these environment variables are set
+if(process.env.SESSION_SECRET === undefined || process.env.PORT === undefined){
+  console.error('ERROR: PORT or SESSION_SECRET are undefined.\nCreate an .env file in the project directory\'s root and defined the missing variables.');
+  process.exit(1);
+}
 
 // make bluebird the default Promise Library
 global.Promise = mongoose.Promise = require('bluebird');
@@ -62,7 +69,6 @@ app.use((err, req, res, next) => {
   res.status(status).send(err.message);
 });
 
-const port = process.env.PORT || 8000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}!`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on port ${process.env.PORT}!`);
 });
