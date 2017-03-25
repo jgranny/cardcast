@@ -23,7 +23,7 @@ var passport = require('passport');
 
 // setup passport dependencies
 app.use(expressSession({
-  secret: 'cardcast-secret-key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
