@@ -1,7 +1,7 @@
 angular.module('cardcast.deck', [
   'ngSanitize'
 ])
-.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, $sce, Service, deck) {
+.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize,$timeout, $sce, Service, deck) {
   $scope.deck = deck;
     $scope.currentCard = {};
 
@@ -9,7 +9,11 @@ angular.module('cardcast.deck', [
   $scope.setCurrent = function(card) {
     $scope.deck.current = card._id;
     Service.setCurrent(card)
-      .then(res=> console.log(deck))
+      .then(res=> {
+        if(session) {
+          $scope.castCard(card)
+        }
+      })
   }
 
   // Deletes selected card from the database
@@ -29,12 +33,22 @@ angular.module('cardcast.deck', [
     $scope.preview = $sanitize(Service.markDownCompile(content));
   });
   $scope.showPopup = function(deck) {
+      var currentCard
+      var found = false;
+      deck.cards.forEach((card) => {
+
+        if (card._id === deck.current) {
+          found = true;
+          currentCard = card
+        }
+      })
+
 
 
     // if there is an active session and no one is casting, cast the card
     if (session && !isCasting) {
       console.log(session.status);
-      $scope.castCard(card);
+      $scope.castCard(currentCard);
 
     // if there is an active session and someone else is casting show popup
     } else if (session && isCasting) {
@@ -50,7 +64,7 @@ angular.module('cardcast.deck', [
         $timeout(function() {
           if (!isCasting) {
             console.log("triggered")
-            $scope.castCard(card);
+            $scope.castCard(currentCard);
           } else {
             $scope.showWarning = true;
             $scope.currentCard = card;
