@@ -114,7 +114,7 @@ angular.module('cardcast', [
       if (!window.session) {
 
         // set up global variables
-        window.applicationID = '88FEFD6D';
+        window.applicationID = DEV_APP_ID;
         window.namespace = 'urn:x-cast:pegatech.card.cast';
         window.isCasting = false;
         window.who = null;
