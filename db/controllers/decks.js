@@ -23,7 +23,8 @@ exports.findOne = function(id) {
         cards: cards.slice()
       };
     });
-  });
+  }).catch(err => (console.log(">>>>>>>>>>>>>>>", "database error", err)))
+    
 };
 
 // update the deck info in the database

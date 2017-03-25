@@ -5,6 +5,7 @@ angular.module('cardcast', [
   'cardcast.auth',
   'cardcast.service',
   'cardcast.deck',
+  'cardcast-receiver',
   'cardcast.edit'
 ])
 
@@ -81,6 +82,11 @@ angular.module('cardcast', [
         deck: getDeck
       }
     })
+    .when('/receiver/:id', {
+      templateUrl: '/sender/controllers/receiver/receiver.html',
+      controller: 'ReceiverCtrl'
+    })
+
     .otherwise({
       redirectTo: '/login'
     });
@@ -180,6 +186,7 @@ angular.module('cardcast', [
 
         // listen for new sessions and update with the proper listeners appropriately
         window.sessionListener = function (currentSession) {
+
           console.log('New session ID: ' + currentSession.sessionId);
           session = currentSession;
           session.addUpdateListener(sessionUpdateListener);
@@ -207,6 +214,7 @@ angular.module('cardcast', [
             var apiConfig = new chrome.cast.ApiConfig(sessionRequest, sessionListener, receiverListener);
 
             chrome.cast.initialize(apiConfig, onInitSuccess, onError);
+
           }
         };
 

@@ -13,17 +13,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="/assets/styles/receiver.css" rel="stylesheet" />
 
-    <!-- Load Angular Modules and Markdown Compiler -->
-    <script src="/assets/lib/material-design-lite/material.min.js"></script>
-    <script src="/assets/lib/angular/angular.min.js"></script>
-    <script src="/assets/lib/angular-route/angular-route.js"></script>
-    <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/assets/lib/marked/lib/marked.js"></script>
-    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
   </head>
   <body>
 
-    <div class="card-canvas mdl-card mdl-shadow--6dp" ng-controller="MainController">
+    <div class="card-canvas mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl">
       <div class="mdl-card__supporting-text">
 
         <!-- This is what actually gets cast to the screen -->
@@ -32,7 +25,3 @@
       </div>
     </div>
 
-
-    <script src="/receiver/components/app.js"></script>
-  </body>
-</html>

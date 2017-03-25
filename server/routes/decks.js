@@ -5,7 +5,7 @@ var cardController = require('../../db/controllers/cards.js');
 var helpers = require('../helpers');
 
 
-router.get('/', helpers.isAuth, function(req, res, next) {
+router.get('/', function(req, res, next) {
   // req has a user object given by passport
   deckController.findAll()
     .then(function(resp) {
@@ -67,6 +67,9 @@ router.put('/update/:id', helpers.isAuth, function(req, res) {
     .catch(function(err) {
       console.error(err);
     });
+});
+router.get('/receiver', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../../clients/receiver/index.html'));
 });
 
 module.exports = router;
