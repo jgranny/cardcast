@@ -37,11 +37,17 @@
       </div>
     </div>
   <div class="col-md-8">
-    <preview></preview>
+      <!-- preview of receiver -->
+      <div class="receiver-preview card-canvas-preview mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl" style="width:100%;">
+        <div class="mdl-card__supporting-text">
+          <!-- This is what actually gets cast to the screen -->
+          <div class="markdown" ng-bind-html="text"></div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- Add Card Button -->
-<a href="#!/decks/{{deck._id}}/new" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
-  <i class="material-icons">add</i>
-</a>
+  <!-- Add Card Button -->
+  <a href="#!/decks/{{deck._id}}/new" class="add-card mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp">
+    <i class="material-icons">add</i>
+  </a>
