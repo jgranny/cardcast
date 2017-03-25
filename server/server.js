@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
@@ -8,9 +9,14 @@ var users = require('./routes/users');
 var cards = require('./routes/cards');
 var decks = require('./routes/decks')
 
+// make sure these environment variables are set
+if(process.env.SESSION_SECRET === undefined || process.env.PORT === undefined){
+  console.error('ERROR: PORT or SESSION_SECRET are undefined.\nCreate an .env file in the project directory\'s root and defined the missing variables.');
+  process.exit(1);
+}
+
 // make bluebird the default Promise Library
 global.Promise = mongoose.Promise = require('bluebird');
-//mongoose.connect('mongodb://localhost/cardcast');
 
 // start app and connect to db
 var app = express();
@@ -23,7 +29,11 @@ var expressSession = require('express-session');
 var passport = require('passport');
 
 // setup passport dependencies
-app.use(expressSession({ secret: 'cardcast-secret-key'}));
+app.use(expressSession({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -40,7 +50,6 @@ require('./passport/init')(passport);
 app.use('/', clients);
 app.use('/api/users', users(passport));
 app.use('/api/decks', decks);
-
 app.use('/api/cards', cards);
 
 // serve static files
@@ -60,6 +69,6 @@ app.use((err, req, res, next) => {
   res.status(status).send(err.message);
 });
 
-app.listen(8000, () => {
-  console.log('Server is listening on port 8000!');
+app.listen(process.env.PORT, () => {
+  console.log(`Server is listening on port ${process.env.PORT}!`);
 });

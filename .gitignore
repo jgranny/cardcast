@@ -3,4 +3,5 @@ clients/assets/lib/
 data/
 .DS_Store
 ._*
+.env
 clients/assets/config/config.js
