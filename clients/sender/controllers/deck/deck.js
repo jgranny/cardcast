@@ -1,9 +1,9 @@
 angular.module('cardcast.deck', [
   'ngSanitize'
 ])
-.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize,$timeout, $sce, Service, deck) {
+.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize,$timeout, $sce, Service, deck, $rootScope) {
   $scope.deck = deck;
-    $scope.currentCard = {};
+  $scope.currentCard = {};
 
   $scope.preview = '';
   $scope.setCurrent = function(card) {
@@ -23,8 +23,6 @@ angular.module('cardcast.deck', [
       .then(function(resp) {
         var index = $scope.deck.cards.indexOf(card);
         $scope.deck.cards.splice(index, 1);
-        console.log(deck.cards, $scope.deck.cards)
-
       });
   };
 
@@ -63,14 +61,14 @@ angular.module('cardcast.deck', [
         // Provides extra time for the reciever to respond
         $timeout(function() {
           if (!isCasting) {
-            console.log("triggered")
             $scope.castCard(currentCard);
           } else {
             $scope.showWarning = true;
             $scope.currentCard = card;
           }
         }, 100);
-
+        $rootScope.castingOn = !$rootScope.castingOn
+        console.log(castingOn)
       }, console.log.bind(null, 'XXXonError: '));
     }
   };
@@ -79,14 +77,16 @@ angular.module('cardcast.deck', [
   $scope.cancelCast = function() {
     $scope.showWarning = false;
   };
+  $scope.stopCast = function () {
+    $rootScope.castingOn = !$rootScope.castingOn
+    endSession()
+  }
 
 
 
   // Sends cast using the card that invoked showPopup. The username tracks who is currently casting
   // Passing the 'clear' parameter stops the current cast and reverts everything to default state.
   $scope.castCard = function(card, clear = false) {
-
-    console.log("Scope.cast", card)
     var message = {
       deck: clear ? null : card.deck,
       card: clear ? '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...' : card.card,

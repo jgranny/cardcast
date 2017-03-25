@@ -12,6 +12,7 @@ var decks = require('./routes/decks')
 
 // make bluebird the default Promise Library
 global.Promise = mongoose.Promise = require('bluebird');
+//mongoose.connect('mongodb://localhost/cardcast');
 
 // start app and connect to db
 var app = express();
@@ -29,6 +30,7 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -45,6 +47,7 @@ require('./passport/init')(passport);
 app.use('/', clients);
 app.use('/api/users', users(passport));
 app.use('/api/decks', decks);
+
 app.use('/api/cards', cards);
 
 // serve static files
@@ -66,4 +69,5 @@ app.use((err, req, res, next) => {
 
 app.listen(config.port, () => {
   console.log(`Server is listening on port ${config.port}!`);
+
 });

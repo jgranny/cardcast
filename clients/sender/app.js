@@ -114,7 +114,7 @@ angular.module('cardcast', [
       if (!window.session) {
 
         // set up global variables
-        window.applicationID = '88FEFD6D';
+        window.applicationID = DEV_APP_ID;
         window.namespace = 'urn:x-cast:pegatech.card.cast';
         window.isCasting = false;
         window.who = null;
@@ -124,7 +124,7 @@ angular.module('cardcast', [
         // the views need to dynamically change based on this value
         // whenever the receiverMessage listener changes this value, the views will update automatically
         $rootScope.cardId = null;
-
+        $rootScope.castingOn = false
         var onInitSuccess = function() {
           console.log('Successful initialization');
         };
@@ -145,10 +145,12 @@ angular.module('cardcast', [
         // makes sure the session is always up to date with the receiver
         // removes the session if the reciever ends the session
         var sessionUpdateListener = function(isAlive) {
+          if(!session) return
           var message = isAlive ? 'Session Updated' : 'Session Removed';
           message += ': ' + session.sessionId;
           console.log(message);
           if (!isAlive) {
+            $rootScope.castingOn = false;
             session = null;
           }
         };

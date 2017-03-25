@@ -11,20 +11,21 @@
             {{deck.title}}
           </h1>
           <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
-          <a href="#!/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Projector</a>
+          <a href="#!/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Share Browser Url</a>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
-                                  <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
-        <input type="button"
+                           
+        <input ng-if="!castingOn" 
+               type="button"
                value="Cast to projector"
                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
                ng-click="showPopup(deck)"/>
 
         <!-- Displays 'Stop' and associated behavior for the card being cast -->
-         <input ng-if="card._id === cardId"
+         <input ng-if="castingOn"
                 type="button"
                 value="Stop"
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
-                ng-click="castCard(null, true)"/>
+                ng-click="stopCast()"/>
   
         </div>
 
