@@ -23,7 +23,7 @@ exports.findOne = function(id) {
         cards: cards.slice()
       };
     });
-  }).catch(err => (console.log(">>>>>>>>>>>>>>>", "database error")))
+  }).catch(err => (console.log(">>>>>>>>>>>>>>>", "database error", err)))
     
 };
 

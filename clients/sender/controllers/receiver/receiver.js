@@ -6,15 +6,15 @@ angular.module('cardcast-receiver', [
   // //TODO
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
+
   //Set up polling function (Also in senders)
   $scope.newCardRequest = function () {
     $http({
       method: 'GET',
       url: `/api/decks/${$location.absUrl().split("/").pop()}`,
-      // dataType: 'jsonp',
       headers: {'Content-Type': 'application/json'},
     }).then(function success(res) {
-      console.log('got')
+      console.info(res.data.current)
 
       var found = false;
 
@@ -24,6 +24,7 @@ angular.module('cardcast-receiver', [
           $scope.text = $sanitize(Markdown.compile(card.card));
         }
         if(!found) {
+            //default message when no one is casting
           $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
         }
       })
@@ -32,14 +33,13 @@ angular.module('cardcast-receiver', [
       console.error(res)
     })
   };
-  //hacky way of getting the deck id
-  //var deckId = $location.absUrl().split("/").pop()
-  // $timeout(function(){newCardRequest()}, 1000);
+  
   $scope.newCardRequest();
   longPolling = $interval(function(){$scope.newCardRequest()}, 1000);
-  $scope.$on('$locationChangeStart', (e) => $interval.cancel(longPolling))
 
-  //default message when no one is casting
+  // stops the requests when page changes
+  $scope.$on('$locationChangeStart', () => $interval.cancel(longPolling))
+
 
 })
 .factory('Markdown', function() {

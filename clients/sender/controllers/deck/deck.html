@@ -9,10 +9,6 @@
         <div class="mdl-card__title">
           <h1 class="mdl-card__title-text">
             {{deck.title}}
-            <!-- <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" ng-model="deck.title" type="text" id="edit-deck-title">
-              <label class="mdl-textfield__label" for="edit-deck-title"></label>
-            </div> -->
           </h1>
           <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
           <a href="#!/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Projector</a>
@@ -39,7 +35,9 @@
         </div>
       </div>
     </div>
-    <div class="receiver-preview card-canvas-preview mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl">
+
+    <!--     preview of receiver --> 
+   <div class="receiver-preview card-canvas-preview mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl">
       <div class="mdl-card__supporting-text">
 
         <!-- This is what actually gets cast to the screen -->
