@@ -7,7 +7,7 @@ angular.module('cardcast-receiver', [
   //Send get request to decks to grab current card
     //Change scope.text to current.text??
   //Set up polling function (Also in senders)
-  var newCardRequest = function () {
+  $scope.newCardRequest = function () {
     $http({
       method: 'GET',
       url: `/api/decks/${$location.absUrl().split("/").pop()}`,
@@ -35,8 +35,9 @@ angular.module('cardcast-receiver', [
   //hacky way of getting the deck id
   //var deckId = $location.absUrl().split("/").pop()
   // $timeout(function(){newCardRequest()}, 1000);
-  newCardRequest();
-  $interval(function(){newCardRequest()}, 1000);
+  $scope.newCardRequest();
+  longPolling = $interval(function(){$scope.newCardRequest()}, 1000);
+  $scope.$on('$locationChangeStart', (e) => $interval.cancel(longPolling))
 
   //default message when no one is casting
 
