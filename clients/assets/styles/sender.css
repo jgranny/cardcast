@@ -237,3 +237,32 @@ p {
   padding: 0;
   overflow: hidden;
 }
+
+.receiver-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  zoom: 1;
+}
+
+.card-canvas-preview {
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f00;
+}
+
+.markdown {
+  color: #fff;
+}
+
+.card-canvas-preview img {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}

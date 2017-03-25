@@ -14,8 +14,8 @@ angular.module('cardcast-receiver', [
       // dataType: 'jsonp',
       headers: {'Content-Type': 'application/json'},
     }).then(function success(res) {
+      console.log('got')
 
-      console.info(res.data.current)
       var found = false;
 
       res.data.cards.forEach((card) => {
