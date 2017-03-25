@@ -249,5 +249,21 @@ angular.module('cardcast', [
           '</div>' +
         '</div>' +
       '</div>'
-  }
+  };
+})
+.directive('btn', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: { action: '&', flat: '@', accent: '@' },
+    template: `<button ng-click="action()" ng-class="{'mdl-button': true, 'mdl-js-button': true, 'mdl-js-ripple-effect': true, 'mdl-button--accent': accent!==undefined, 'mdl-button--raised': flat===undefined }"><ng-transclude></ng-transclude></button>`
+  };
+})
+.directive('add', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    scope: { action: '&' },
+    template: `<a ng-click="action()" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--accent mdl-shadow--4dp"><i class="material-icons">add</i></a>`
+  };
 });
