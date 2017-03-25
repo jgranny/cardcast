@@ -13,6 +13,19 @@
           <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
           <a href="#!/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Projector</a>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
+                                  <!-- Displays 'Cast' with associated behavior for all cards not being casted -->
+        <input ng-if="card._id !== cardId"
+               type="button"
+               value="Cast to projector"
+               class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+               ng-click="showPopup(card)"/>
+
+        <!-- Displays 'Stop' and associated behavior for the card being cast -->
+         <input ng-if="card._id === cardId"
+                type="button"
+                value="Stop"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                ng-click="castCard(null, true)"/>
   
         </div>
 
@@ -38,13 +51,17 @@
       </div>
     </div>
 
-    <!-- Card Preview -->
-    <preview></preview>
+    <!--     preview of receiver --> 
+   <div class="receiver-preview card-canvas-preview mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl">
+      <div class="mdl-card__supporting-text">
 
-  </div>
+        <!-- This is what actually gets cast to the screen -->
+        <div class="markdown" ng-bind-html="text"></div>
+
+      </div>
 
   <!-- This just adds some space at the bottom so scrolling looks nice -->
-  <renderData></renderData>
+  <div class="deck-footer"></div>
 </div>
 
 <!-- Add Card Button -->

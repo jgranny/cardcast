@@ -1,20 +1,29 @@
-
+html, body {
+  height: 100%;
+  width: 100%;
+}
 
 body {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  zoom: 3;
+  zoom: 1.3;
 }
 
+p {
+  margin-bottom: 0;
+}
 
 .card-canvas {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff0;
+  padding: 0 40px;
+  background-color: #ff5252;
 }
 
 .markdown {
@@ -23,9 +32,7 @@ body {
 
 .card-canvas img {
   display: block;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200%;
+  width: 50%;
+  border-radius: 4px;
   margin: 0 auto;
 }

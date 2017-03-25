@@ -28,9 +28,8 @@ angular.module('cardcast.deck', [
     let content = $scope.deck.cards.filter(card => card._id === newValue)[0].card;
     $scope.preview = $sanitize(Service.markDownCompile(content));
   });
-  $scope.showPopup = function(card) {
-    console.log(card)
-    console.log(chrome.cast)
+  $scope.showPopup = function(deck) {
+
 
     // if there is an active session and no one is casting, cast the card
     if (session && !isCasting) {
@@ -50,6 +49,7 @@ angular.module('cardcast.deck', [
         // Provides extra time for the reciever to respond
         $timeout(function() {
           if (!isCasting) {
+            console.log("triggered")
             $scope.castCard(card);
           } else {
             $scope.showWarning = true;
@@ -79,7 +79,7 @@ angular.module('cardcast.deck', [
       cardId: clear ? null : card._id
     };
     $scope.showWarning = false;
-    session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'XXXonError: '));
+    session.sendMessage(namespace, JSON.stringify(message), console.log.bind(null, 'onSuccess: ', 'Message was sent: ' + message), console.log.bind(null, 'XonError: '));
   };
 
 });

@@ -177,7 +177,6 @@ angular.module('cardcast', [
 
         // log events
         var receiverListener = function(event) {
-          console.log(event)
           if (event === 'available') {
             console.log('receiver found');
           } else {

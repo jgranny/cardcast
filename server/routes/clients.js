@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../../clients/sender/index.html'));
 });
-router.get('/receiver/', (req, res, next) => {
+router.get('/receiver', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../../clients/receiver/index.html'));
 });
 // handle get request to '/receiver' by sending them the receiver index page

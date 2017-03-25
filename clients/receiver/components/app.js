@@ -7,7 +7,7 @@ angular.module('cardcast-receiver', [
   var isCasting = false;
   var who = null;
   var cardId = null;
-
+  console.log("triggered")
   //broadcast makes the receiver send out a response message to all connected senders
   //it tells them who if anyone is currently casting and the id of the card that is being cast
   //when the card sender gets this broadcast, main.html changes 'cast' button to 'stop'
@@ -20,7 +20,7 @@ angular.module('cardcast-receiver', [
   };
 
   //default message when no one is casting
-  $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been casted yet...';
+  $scope.text = '<h2>Welcome to CardCast!</h2><br/>Nothing has been cast yet...';
 
   //initialize sets up the castReceiverManager, messageBus and all related functions
   var initialize = function() {
@@ -58,6 +58,7 @@ angular.module('cardcast-receiver', [
     //sanitize it to prevent malicious code from being entered, then compile the markdown
     //cast to screen and send a broadcast notifying all connected senders of change
     messageBus.onMessage = function(event) {
+      console.log(event)
 
       console.log('Message [' + event.senderId + ']: ' + event.data);
 
