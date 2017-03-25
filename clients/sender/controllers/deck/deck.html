@@ -13,8 +13,8 @@
           <button ng-click="goToDeck()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Back</button>
           <a href="#!/receiver/{{deck._id}}" target="_blank" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Share Browser Url</a>
           <button ng-click="logout()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised">Logout</button>
-                           
-        <input ng-if="!castingOn" 
+
+        <input ng-if="!castingOn"
                type="button"
                value="Cast to projector"
                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
@@ -26,7 +26,7 @@
                 value="Stop"
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
                 ng-click="stopCast()"/>
-  
+
         </div>
 
       </div>
@@ -43,22 +43,15 @@
         <div class="mdl-card__actions mdl-card--border">
           <a href="#!/decks/card/{{card._id}}/edit"><button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button></a>
           <input type="button" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" ng-click="deleteCard(card)"/>
-          <button ng-click="setCurrent(card)" 
+          <button ng-click="setCurrent(card)"
          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
         >Cast</button>
 
         </div>
       </div>
     </div>
-
-    <!--     preview of receiver --> 
-   <div class="receiver-preview card-canvas-preview mdl-card mdl-shadow--6dp" ng-controller="ReceiverCtrl">
-      <div class="mdl-card__supporting-text">
-
-        <!-- This is what actually gets cast to the screen -->
-        <div class="markdown" ng-bind-html="text"></div>
-
-      </div>
+    <!-- Card Preview -->
+    <preview></preview>
 
   <!-- This just adds some space at the bottom so scrolling looks nice -->
   <div class="deck-footer"></div>
