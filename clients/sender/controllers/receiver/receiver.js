@@ -14,8 +14,6 @@ angular.module('cardcast-receiver', [
       url: `/api/decks/${$location.absUrl().split("/").pop()}`,
       headers: {'Content-Type': 'application/json'},
     }).then(function success(res) {
-      console.info(res.data.current)
-
       var found = false;
 
       res.data.cards.forEach((card) => {
