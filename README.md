@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: David Pollan
-  - __Scrum Master__: Jerry Krusinski
-  - __Development Team Member__: Jin Chung
+  - __Product Owner__: Elijah Schow
+  - __Scrum Master__: Cory Grinstead
+  - __Development Team Member__: Jonathan Granstaff & L. Burk McRae
 
 ## Table of Contents
 
@@ -65,7 +65,7 @@ Ignoring the clients folder ensures server sessions aren't destroyed every time 
 
 Now you should be able to access the sender application from your browser at `http://localhost:8000`. To cast the receiver application, go to the __Chrome Browser Menu__ and select __Cast__. A window should appear listing all of the Chromecasts available on your LAN. Select the Chromecast you registered on the Google Cast Developer Console. The Chromecast should load the __Receiver URL__ that's associated with the __APP ID__ in the sender application. If the setup was done correctly, this should be pointing to the server you have just set up on port 8000 on your local machine.
 
-To access the __Chromecast Debugger Window__, go to `chrome://inspect` in your browser _while the application is casting_. You should see your developer Chromecast listed on the page. Click the `inspect` link to open up the Chromecast debugger. This is where you can access the console and all of the other development tools for the receiver side application. You can also access the debugger window by finding your Chromecast's LAN IP and going to `http://<YOUR_CHROMECAST_IP>:9222` in your browser. 
+To access the __Chromecast Debugger Window__, go to `chrome://inspect` in your browser _while the application is casting_. You should see your developer Chromecast listed on the page. Click the `inspect` link to open up the Chromecast debugger. This is where you can access the console and all of the other development tools for the receiver side application. You can also access the debugger window by finding your Chromecast's LAN IP and going to `http://<YOUR_CHROMECAST_IP>:9222` in your browser.
 
 
 ### Helpful Resources
@@ -85,7 +85,7 @@ Database
 Styling
 * [Material Design Lite](https://getmdl.io/)
 
-Markdown 
+Markdown
 * [Marked Compiler](https://www.npmjs.com/package/marked)
 
 ### Roadmap
