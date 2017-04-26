@@ -67,7 +67,7 @@ app.use((err, req, res, next) => {
   res.status(status).send(err.message);
 });
 
-app.listen(config.port, () => {
-  console.log(`Server is listening on port ${config.port}!`);
+app.listen(8002, () => {
+  console.log('Server is listening on port 8002!');
 
 });
