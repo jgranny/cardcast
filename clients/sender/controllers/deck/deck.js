@@ -1,9 +1,13 @@
 angular.module('cardcast.deck', [
   'ngSanitize'
 ])
-.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize,$timeout, $sce, Service, deck, $rootScope) {
+.controller('DeckCtrl', function($scope, $location, $routeParams, $sanitize, $timeout, $sce, Service, deck, $rootScope) {
   $scope.deck = deck;
   $scope.currentCard = {};
+  $scope.editing = false;
+
+  $scope.handleSubmit = (deck) => Service.updateDeck(deck).then(() =>$scope.switch());
+  $scope.switch = () => $scope.editing = !$scope.editing;
 
   $scope.preview = '';
   $scope.setCurrent = function(card) {
@@ -27,6 +31,7 @@ angular.module('cardcast.deck', [
   };
 
   $scope.$watch('deck.current', function(newValue, oldValue) {
+    console.log($scope.deck);
     let content = $scope.deck.cards.filter(card => card._id === newValue)[0].card;
     $scope.preview = $sanitize(Service.markDownCompile(content));
   });
