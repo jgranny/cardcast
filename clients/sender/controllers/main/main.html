@@ -24,7 +24,7 @@
         </div>
 
         <div class="mdl-card__supporting-text">
-          Below is a list of all of the cards in your personal deck. Click the plus button in the bottom right corner to add a new card to your deck or edit one that already exits. When you are ready to cast a card, hit the cast button to share the card with any Chromecast on your network. Please make sure you are using an up-to-date version of the Chrome Browser.
+          Below is a list of all of your slide decks. Here you can edit or delete slide decks. Click the add button in the bottom right corner to create a new slide deck!
         </div>
 
       </div>
@@ -39,18 +39,14 @@
       <div class="card mdl-card mdl-shadow--4dp">
 
         <div class="mdl-card__title">
-          <h3
-            class="mdl-card__title-text" 
-           ng-click="showDetails = !showDetails"
-          >{{deck.title}}</h3>
+                <div ng-if="!editing"
+               ng-click="switch()">{{deck.title}}</div>
 
-
-
-          <div 
+          <div ng-if="editing"
           ng-keyup="$event.keyCode == 13 ? handleSubmit(deck) : null "
-          ng-show="showDetails">
+          >
               <input class="mdl-textfield__input" ng-model="deck.title" type="text">
-            
+
             </div>
 
         </div>
